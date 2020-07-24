@@ -2,6 +2,14 @@
 
 Website: https://merthew-game.surge.sh/
 
+## How to use:
+
+1. Download the file `save1.msf` from the folder "Save Tests"
+2. Go to the link above
+3. Chose `save1.msf` as the file to upload.
+4. Make changes to the file, then reupload to test your changes.
+5. Have fun making Text Adventure Games
+
 ### IMPORTANT
 
 ```
