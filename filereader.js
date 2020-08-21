@@ -33,8 +33,12 @@ function handleFileLoad(event){
 		* Important sections of the text are denoted by <!></!> and will show up as blue text.
 		* Newline characters are denoted as \n and ONLY usable in the optionAddition tag.
 		*/
+		
+		
 		var buffer = raw;
+		//console.log(buffer);
 		//Pulling out the startup message.
+		/*
 		buffer = buffer.substring(buffer.search("<T>") + 3);
 		startupMessage = buffer.substring(0, buffer.search("<T>"));
 		buffer = buffer.substring(buffer.search("<T>") + 3);
@@ -42,11 +46,13 @@ function handleFileLoad(event){
 		startupMessage = startupMessage.replace(/<!>/g, "<a class=\"important\">");
 		startupMessage = startupMessage.replace(/<\/!>/g, "</a>");
 		bodyText += startupMessage;
-		
+		*/
+		buffer = buffer.substring(3);
+		buffer = buffer.trim();
 		buffer = buffer.replace(/<!>/g, "<a class=\"important\">");
 		buffer = buffer.replace(/<\/!>/g, "</a>");
 		
-		
+		//console.log(buffer);
 		
 		//Start segment parting
 		while(buffer != "" || buffer){
@@ -60,6 +66,7 @@ function handleFileLoad(event){
 				optionText[num] = temp;
 				buffer = buffer.trim();
 				break;
+				
 				//optionAddition
 				case '\'':
 				var num = Number(buffer.substring(2).substring(0, buffer.substring(2).search("\'")));
@@ -70,6 +77,7 @@ function handleFileLoad(event){
 				optionAddition[num] = temp;
 				buffer = buffer.trim();
 				break;
+				
 				//optionGroups
 				case ':':
 				var num = Number(buffer.substring(2).substring(0, buffer.substring(2).search(":")));
@@ -84,6 +92,21 @@ function handleFileLoad(event){
 					optionGroups[num+1][i] = Number(nums[i]);
 				}
 				buffer = buffer.trim();
+				break;
+				
+				//Startup Message
+				case 'T':
+				buffer = buffer.substring(3);
+				
+				startupMessage = buffer.substring(0, buffer.substring(3).indexOf("<T>") + 3);
+				buffer = buffer.substring(buffer.indexOf("<T>") + 3);
+				buffer = buffer.trim();
+				console.log(buffer);
+				bodyText += startupMessage;
+				break;
+				default:
+				buffer = "";
+				console.log("Something broke chief");
 				break;
 			}
 		}
@@ -102,7 +125,6 @@ function handleFileLoad(event){
 				el.style.opacity = opacity;
 			}
 		}, 30/1000);
-		console.log(optionGroups);
 		createSelections(0);
 	}
 }

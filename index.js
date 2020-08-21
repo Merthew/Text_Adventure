@@ -26,7 +26,7 @@ function updateText(){
 		let body = document.getElementById("bodyTextWrapper");
 		body.innerHTML = bodyText;
 		body.scrollTop = body.scrollHeight;
-		console.log(">> Updated Body Text");
+		//console.log(">> Updated Body Text");
 	}
 }
 
@@ -35,7 +35,7 @@ function selectionHandler(flag){
 		removeOption(optionGroups[currentOptionGroup][i]);
 	}
 	choiceArray[choiceArray.length] = flag;
-	console.log(choiceArray);
+	//console.log(choiceArray);
 	createSelections(flag+1);
 	currentOptionGroup = flag + 1;
 	
@@ -43,14 +43,14 @@ function selectionHandler(flag){
 	var textAddition = optionAddition[flag];
 	if(textAddition.includes("<[>")){
 		while(textAddition.includes("<[>")){
-			console.log("random choice parsing now");
+			//console.log("random choice parsing now");
 			
 			var temp = textAddition.substring(textAddition.indexOf("<[>") + 3);
 			temp = temp.substring(0, temp.indexOf("<]>"));
 			var tempA = temp.split(",");
 			
 			var choice = tempA[Math.floor(Math.random() * tempA.length)];
-			console.log(choice);
+			//console.log(choice);
 			textAddition = textAddition.replace(/<\[>([a-z]*[A-Z]*[,\\\.]*[0-9]*)*<]>/, choice);
 			
 		}
@@ -95,7 +95,7 @@ function createSelections(setNumber){
 }
 
 function createOption(optionNum){
-	console.log("Making option");
+	//console.log("Making option");
 	var div = document.createElement("DIV");
 	div.className = "selection";
 	div.setAttribute("onclick", "selectionHandler("+optionNum+");");
