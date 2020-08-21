@@ -40,17 +40,20 @@ function selectionHandler(flag){
 	currentOptionGroup = flag + 1;
 	
 	//TODO: Random choice from parsed segment
-	
-	if(optionAddition[flag].includes("<[>")){
-		console.log("random choice parsing now");
-		var textAddition = optionAddition[flag];
-		var temp = optionAddition[flag].substring(optionAddition[flag].indexOf("<[>") + 3);
-		temp = temp.substring(0, temp.indexOf("<]>"));
-		var tempA = temp.split(",");
-		
-		var choice = tempA[Math.floor(Math.random() * tempA.length)];
-		console.log(choice);
-		textAddition = textAddition.replace(/<\[>.+<]>/g, choice);
+	var textAddition = optionAddition[flag];
+	if(textAddition.includes("<[>")){
+		while(textAddition.includes("<[>")){
+			console.log("random choice parsing now");
+			
+			var temp = textAddition.substring(textAddition.indexOf("<[>") + 3);
+			temp = temp.substring(0, temp.indexOf("<]>"));
+			var tempA = temp.split(",");
+			
+			var choice = tempA[Math.floor(Math.random() * tempA.length)];
+			console.log(choice);
+			textAddition = textAddition.replace(/<\[>([a-z]*[A-Z]*[,\\\.]*[0-9]*)*<]>/, choice);
+			
+		}
 		bodyText += "<br><br>" + textAddition;
 	}
 	else{
