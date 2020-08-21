@@ -27,6 +27,7 @@ function handleFileLoad(event){
 		* optionText 		= 	<"0"><"0"> where 0 is the index of the entry.
 		* optionAddition 	= 	<'0'><'0'> where 0 is the index of the entry.
 		* optionGroups		=	<:0:>1,2<:0:> where 0 is the index of the group, and 1,2 is the list of the entries separated by commas
+		* random selection  =   <[>option 1, option 2<]>
 		* ===========================================================
 		* Overrides are done by the last conflicting thing in the file being chosen.
 		* Important sections of the text are denoted by <!></!> and will show up as blue text.

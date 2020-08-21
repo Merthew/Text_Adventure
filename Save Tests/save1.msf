@@ -14,7 +14,7 @@ MSF
 
 <"3">Look at the clock<"3">
 <'3'>You watch the clock. . . nothing changes.<'3'>
-<:3:><:3:>
+<:3:>6<:3:>
 
 <"4">Sit down<"4">
 <'4'>You sit down on the carpet, wondering what you are doing with your life.<'4'>
@@ -23,3 +23,7 @@ MSF
 <"5">Set yourself on fire.<"5">
 <'5'>You pour a can of gasoline over yourself and light it off.\nIt's pleasantly warm.<'5'>
 <:5:><:5:>
+
+<"6">Pick a random number<"6">
+<'6'>You chose <[>1,2,3,potato,5<]>.<'6'>
+<:6:><:6:>

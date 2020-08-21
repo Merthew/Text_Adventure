@@ -38,7 +38,24 @@ function selectionHandler(flag){
 	console.log(choiceArray);
 	createSelections(flag+1);
 	currentOptionGroup = flag + 1;
-	bodyText += "<br><br>" + optionAddition[flag];
+	
+	//TODO: Random choice from parsed segment
+	
+	if(optionAddition[flag].includes("<[>")){
+		console.log("random choice parsing now");
+		var textAddition = optionAddition[flag];
+		var temp = optionAddition[flag].substring(optionAddition[flag].indexOf("<[>") + 3);
+		temp = temp.substring(0, temp.indexOf("<]>"));
+		var tempA = temp.split(",");
+		
+		var choice = tempA[Math.floor(Math.random() * tempA.length)];
+		console.log(choice);
+		textAddition = textAddition.replace(/<\[>.+<]>/g, choice);
+		bodyText += "<br><br>" + textAddition;
+	}
+	else{
+		bodyText += "<br><br>" + optionAddition[flag];
+	}
 }
 
 function removeOption(optionNum){
