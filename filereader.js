@@ -11,7 +11,6 @@ function handleFileSelect(event){
 }
 
 function handleFileLoad(event){
-	//console.log(event.target.result);
 	raw = event.target.result;
 
 	//All save files should be marked with MSF somewhere in the file.
@@ -34,25 +33,13 @@ function handleFileLoad(event){
 		* Newline characters are denoted as \n and ONLY usable in the optionAddition tag.
 		*/
 		
-		
 		var buffer = raw;
-		//console.log(buffer);
-		//Pulling out the startup message.
-		/*
-		buffer = buffer.substring(buffer.search("<T>") + 3);
-		startupMessage = buffer.substring(0, buffer.search("<T>"));
-		buffer = buffer.substring(buffer.search("<T>") + 3);
-		buffer = buffer.trim();
-		startupMessage = startupMessage.replace(/<!>/g, "<a class=\"important\">");
-		startupMessage = startupMessage.replace(/<\/!>/g, "</a>");
-		bodyText += startupMessage;
-		*/
+		//Pulls "MSF" out of the file
 		buffer = buffer.substring(3);
 		buffer = buffer.trim();
+		//Fixes some of the tags to work with HTML
 		buffer = buffer.replace(/<!>/g, "<a class=\"important\">");
 		buffer = buffer.replace(/<\/!>/g, "</a>");
-		
-		//console.log(buffer);
 		
 		//Start segment parting
 		while(buffer != "" || buffer){
@@ -97,11 +84,9 @@ function handleFileLoad(event){
 				//Startup Message
 				case 'T':
 				buffer = buffer.substring(3);
-				
 				startupMessage = buffer.substring(0, buffer.substring(3).indexOf("<T>") + 3);
 				buffer = buffer.substring(buffer.indexOf("<T>") + 3);
 				buffer = buffer.trim();
-				console.log(buffer);
 				bodyText += startupMessage;
 				break;
 				default:
